@@ -1,0 +1,18 @@
+baseURL = "https://ezcan.github.io/"
+languageCode = "zh_TW"
+title = "ezcan's note"
+theme = "Hyde"
+googleAnalytics = "UA-149142019-1"
+
+[params]
+  description = "個人學習筆記"
+  author = "ezcan Lien"
+  themeColor = "theme-base-0c"
+  since = "2019"
+
+[Menus]
+  main = [
+      {Name = "Codepen", URL="https://codepen.io/ezcan/pens/public"},
+      {Name = "Github", URL = "https://github.com/ezcan/"},
+      {Name = "About", URL = "https://ezcan.github.io/about/"}
+  ]
