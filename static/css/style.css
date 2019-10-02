@@ -8,13 +8,11 @@
 #tags .page-tag {
   display: inline-block;
   font-size: 14px;
-  /* font-family: 'Raleway', 'Helvetica Neue', 'Arial', sans-serif; */
-  letter-spacing: -0.005rem;
   font-weight: 400;
   background-color:#9a9a9a;
   color: #fff;
   font-style: normal;
-  margin-right: 5px;
+  margin-right: 4px;
   margin-left: 0px;
   padding: 2px 8px;
   border-radius: 4px;
