@@ -1,5 +1,5 @@
 ---
-title: "Hello Hugo （四） 新增標籤"
+title: "Hello Hugo （四） 文章分類標籤"
 date: 2019-10-02T15:34:25+08:00
 draft: false
 tags: ["hugo"]
@@ -9,8 +9,8 @@ tags: ["hugo"]
 建立一篇新的 .md 檔案時，會自動帶入一些內容如下，其中 title 與 date 應該不難理解； draft 為註記是否為草稿，如為 true 則不會發佈。可能是我選擇的主題（hyde）不支援 tags 這種文章分類，因此在原本的樣板中沒有看到，所以就自己動手新增囉！
 
 ```md
-title: "Hello Hugo （四） 環境建置"
-date: 2019-10-01T00:01:29+08:00
+title: "Hello Hugo （四） 文章分類標籤"
+date: 2019-10-02T15:34:25+08:00
 draft: false
 tags: ["hugo"]
 ```
@@ -30,7 +30,7 @@ tags: ["hugo"]
   </ul>
 {{ end }}
 ```
-沒意外的話，應該會出現原始 html 中醜醜的清單，所以為了方便以後修改，我在 static/css 下建立了我自己的 style.css ，並在 head.html 中匯入，比方說這樣。
+沒意外的話，應該會出現原始 html 中醜醜的清單，剩下就是樣式的事情了，同時為了方便以後修改，我在 static/css 下建立了我自己的 style.css ，並在 head.html 中匯入，比方說這樣。
 ```css
 #tags {
   list-style: none;
