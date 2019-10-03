@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ezcan&#39;s note</title>
+    <link>https://ezcan.github.io/</link>
+    <description>Recent content on ezcan&#39;s note</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh_TW</language>
+    <lastBuildDate>Thu, 03 Oct 2019 00:52:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://ezcan.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello Hugo （五） 導入 Google Analytics</title>
+      <link>https://ezcan.github.io/posts/hugo_ga/</link>
+      <pubDate>Thu, 03 Oct 2019 00:52:31 +0800</pubDate>
+      
+      <guid>https://ezcan.github.io/posts/hugo_ga/</guid>
+      <description>寫這篇文章前我其實還沒有深入了解過 Google Analytics (GA)，不過大抵知道有以下兩個優點：
+ 了解使用者（如何進入你的網站、可能的背景） 觀察使用者進入網站後的行為  雖然不知道上述資訊對這種筆記部落格有什麼幫助，反正 GA 基本版是完全免費的，在 hugo 上設定也只要兩、三個步驟就好，順手開始囉！
+ 第一個步驟當然是到 Google Analytics 去建立一個專案，並且複製它的應用程式 ID ，可能長得是這個樣子： UA-xxxxxxx-1 回到專案的 config.toml ，加入步驟1. 拿到的 ID
+googleAnalytics = &amp;quot;UA-xxxxxxx-1&amp;quot;  在 layouts/partials/head.html 中加入以下程式碼。
+{{ if not .Site.IsServer }} {{ template &amp;quot;_internal/google_analytics_async.html&amp;quot; . }} {{ end }}   簡單補充一下，其實導入 GA 只要上述中間那行程式碼就可以了，只是這樣會不分青紅皂白的連本地預覽資料都往 server 送，以上。</description>
+    </item>
+    
+    <item>
+      <title>Hello Hugo （四） 文章分類標籤</title>
+      <link>https://ezcan.github.io/posts/hugo_tags/</link>
+      <pubDate>Wed, 02 Oct 2019 15:34:25 +0800</pubDate>
+      
+      <guid>https://ezcan.github.io/posts/hugo_tags/</guid>
+      <description>建立一篇新的 .md 檔案時，會自動帶入一些內容如下，其中 title 與 date 應該不難理解； draft 為註記是否為草稿，如為 true 則不會發佈。可能是我選擇的主題（hyde）不支援 tags 這種文章分類，因此在原本的樣板中沒有看到，所以就自己動手新增囉！
+title: &amp;quot;Hello Hugo （四） 文章分類標籤&amp;quot; date: 2019-10-02T15:34:25+08:00 draft: false tags: [&amp;quot;hugo&amp;quot;]  我預計在兩個地方新增標籤，一是文章的目錄頁，二是文章的內容頁（現在這頁），因此我們找到 layout 下尋找兩個檔案。
+ layout/index.html layout/_default/single.html  分別在想要出現 tags 的地方插入下面這段程式碼，以我自己為例，就是文章標題與時間的下方。
+{{ with .Params.tags }} &amp;lt;ul class=&amp;quot;tags&amp;quot;&amp;gt; {{ range . }} &amp;lt;li&amp;gt; &amp;lt;a class=&amp;quot;page-tag&amp;quot; href=&amp;quot;{{ &amp;quot;tags&amp;quot; | absURL }}/{{ . | urlize }}&amp;quot;&amp;gt;{{ . }}&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt; {{ end }} &amp;lt;/ul&amp;gt; {{ end }}  沒意外的話，應該會出現原始 html 中醜醜的清單，剩下就是樣式的事情了，同時為了方便以後修改，我在 static/css 下建立了我自己的 style.</description>
+    </item>
+    
+    <item>
+      <title>Hello Hugo （三） 發佈到GitHub Page</title>
+      <link>https://ezcan.github.io/posts/hugo_public_to_git/</link>
+      <pubDate>Wed, 02 Oct 2019 15:30:31 +0800</pubDate>
+      
+      <guid>https://ezcan.github.io/posts/hugo_public_to_git/</guid>
+      <description> 上傳到Github 空間的部分，我打算上傳到 github page 個人主頁，所以&amp;hellip;
+ 自動建立 public 資料夾
+hugo  在 /public 中初始化 git
+cd public git init git commit -m &amp;quot;first commit&amp;quot; git remote add origin https://github.com/ezcan/ezcan.github.io.git git push -u origin master   </description>
+    </item>
+    
+    <item>
+      <title>Hello Hugo （二）語法高亮度</title>
+      <link>https://ezcan.github.io/posts/hugo_highlight/</link>
+      <pubDate>Wed, 02 Oct 2019 15:26:33 +0800</pubDate>
+      
+      <guid>https://ezcan.github.io/posts/hugo_highlight/</guid>
+      <description> 語法高亮度 由於這裡打算筆記自己以後的開發上的學習經驗為主，所以裝個語法高亮度外掛是必須的，我選用的是 browser 渲染的解決方案。
+ 引入 highlight.js 的 css ，這裡可以預覽 引入 highlight.js CDN，目前最新版本為9.15.10 載入 js
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai-sublime.min.css&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;hljs.initHighlightingOnLoad();&amp;lt;/script&amp;gt;   </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://ezcan.github.io/about/</link>
+      <pubDate>Tue, 01 Oct 2019 05:11:41 +0800</pubDate>
+      
+      <guid>https://ezcan.github.io/about/</guid>
+      <description>教育體制下的魯蛇，曾想成為一名資訊老師， 繞了點路後發覺「教育圈裡的工程師」這個方向， 或許更適合自己，也有機會接觸更多擁有相同夢想的人。 現階段是擁有兩年實務經驗的前端工程師， 正在往全端工程師的路上緩慢前進中！  </description>
+    </item>
+    
+    <item>
+      <title>Hello Hugo （一） 環境建置</title>
+      <link>https://ezcan.github.io/posts/hugo_create_env/</link>
+      <pubDate>Tue, 01 Oct 2019 00:01:29 +0800</pubDate>
+      
+      <guid>https://ezcan.github.io/posts/hugo_create_env/</guid>
+      <description>基於某些因素，決定來寫個部落格；又考慮了幾個選項與方案，包含wordpress、medium等；最後選定了靜態html產生器，與號稱兩分鐘就上手的hugo這個工具，並順手將建置的過程筆記起來。
+兩分鐘體驗  第一步是安裝homebrew（我原本就用mac開發，所以這就略過了） 再來安裝hugo
+brew install hugo  建立一個新的網站
+hugo new site blog  產生的專案架構如下
+# &amp;lt;project-name&amp;gt; file structure |- archetypes |- content |- data |- layouts |- resources |- static |- themes |- config.toml  進入themes目錄，並從hugo theme中選一套佈景來套用
+cd blog/themes git clone https://github.com/spf13/hyde.git cd ..  然後就可以打開慣用的編輯器了，我原先以為專案直接跑會有預設畫面，但並沒有，開起來是全白的畫面XD
+# config.toml baseURL = &amp;quot;http://ezcan.github.io/&amp;quot; languageCode = &amp;quot;zh_TW&amp;quot; title = &amp;quot;ezcan&#39;s note&amp;quot; # 記得要在 config.toml 指定對應的主題 theme = &amp;quot;Hyde&amp;quot;  新增一篇文章，就是你現在看到的這篇</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh_TW" lang="zh_TW">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.58.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hello Hugo &middot; ezcan&#39;s note</title>
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-149142019-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class="theme-base-0c ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://ezcan.github.io/"><h1>ezcan&#39;s note</h1></a>
+      <p class="lead">
+       個人學習筆記 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://ezcan.github.io/">Home</a> </li>
+        <li><a href="https://ezcan.github.io/about/"> About </a></li><li><a href="https://codepen.io/ezcan/pens/public"> Codepen </a></li><li><a href="https://github.com/ezcan/"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1 class="title">Hello Hugo</h1>
+  <time datetime=2019-10-01T00:01:29&#43;0800 class="post-date">Tue, Oct 1, 2019</time>
+  
+    <ul id="tags">
+      
+      <li> <a class="page-tag" href="https://ezcan.github.io/tags/hugo">hugo</a> </li>
+      
+    </ul>
+  
+  
+
+<p>基於某些因素，決定來寫個部落格；又考慮了幾個選項與方案，包含wordpress、medium等；最後選定了靜態html產生器，與號稱兩分鐘就上手的hugo這個工具，並順手將建置的過程筆記起來。</p>
+
+<h3 id="兩分鐘體驗">兩分鐘體驗</h3>
+
+<ol>
+<li>第一步是安裝homebrew（我原本就用mac開發，所以這就略過了）</li>
+
+<li><p>再來安裝hugo</p>
+
+<pre><code>brew install hugo
+</code></pre></li>
+
+<li><p>建立一個新的網站</p>
+
+<pre><code>hugo new site blog
+</code></pre>
+
+<p>產生的專案架構如下</p>
+
+<pre><code># &lt;project-name&gt; file structure
+|- archetypes
+|- content
+|- data
+|- layouts
+|- resources
+|- static
+|- themes
+|- config.toml
+</code></pre></li>
+
+<li><p>進入themes目錄，並從<a href="https://themes.gohugo.io">hugo theme</a>中選一套佈景來套用</p>
+
+<pre><code>cd blog/themes
+git clone https://github.com/spf13/hyde.git
+cd ..
+</code></pre></li>
+
+<li><p>然後就可以打開慣用的編輯器了，我原先以為專案直接跑會有預設畫面，但並沒有，開起來是全白的畫面XD</p>
+
+<pre><code># config.toml
+baseURL = &quot;http://ezcan.github.io/&quot; 
+languageCode = &quot;zh_TW&quot;
+title = &quot;ezcan's note&quot;
+
+# 記得要在 config.toml 指定對應的主題
+theme = &quot;Hyde&quot;
+</code></pre></li>
+
+<li><p>新增一篇文章，就是你現在看到的這篇</p>
+
+<pre><code>hugo new posts/hello_hugo
+</code></pre></li>
+
+<li><p>本機瀏覽一下，兩分鐘到這邊完成。</p>
+
+<pre><code>hugo server -D
+</code></pre></li>
+</ol>
+
+<h3 id="語法高亮度">語法高亮度</h3>
+
+<p>由於這裡打算筆記自己以後的開發上的學習經驗為主，所以裝個語法高亮度外掛是必須的，我選用的是 browser 渲染的解決方案。</p>
+
+<ol>
+<li>引入 highlight.js 的 css ，<a href="https://highlightjs.org/static/demo/">這裡</a>可以預覽</li>
+<li>引入 highlight.js CDN，目前最新版本為9.15.10</li>
+
+<li><p>載入 js</p>
+
+<pre><code class="language-html"># themes/hyde/layout/partials/head.html
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai-sublime.min.css&quot;&gt;
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;
+</code></pre></li>
+</ol>
+
+<h3 id="上傳到github">上傳到Github</h3>
+
+<p>空間的部分，我打算上傳到 github page 個人主頁，所以&hellip;</p>
+
+<ol>
+<li><p>自動建立 public 資料夾</p>
+
+<pre><code>hugo
+</code></pre></li>
+
+<li><p>在 /public 中初始化 git</p>
+
+<pre><code>cd public
+git init
+git commit -m &quot;first commit&quot;
+git remote add origin https://github.com/ezcan/ezcan.github.io.git
+git push -u origin master
+</code></pre></li>
+</ol>
+
+</div>
+
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-149142019-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </body>
+</html>

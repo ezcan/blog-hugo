@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://ezcan.github.io/</loc>
+    <lastmod>2019-10-03T00:52:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/posts/hugo_ga/</loc>
+    <lastmod>2019-10-03T00:52:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/tags/hugo/</loc>
+    <lastmod>2019-10-03T00:52:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/posts/</loc>
+    <lastmod>2019-10-03T00:52:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/tags/</loc>
+    <lastmod>2019-10-03T00:52:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/posts/hugo_tags/</loc>
+    <lastmod>2019-10-02T15:34:25+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/posts/hugo_public_to_git/</loc>
+    <lastmod>2019-10-02T15:30:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/posts/hugo_highlight/</loc>
+    <lastmod>2019-10-02T15:26:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/about/</loc>
+    <lastmod>2019-10-01T05:11:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/posts/hugo_create_env/</loc>
+    <lastmod>2019-10-01T00:01:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ezcan.github.io/categories/</loc>
+  </url>
+  
+</urlset>

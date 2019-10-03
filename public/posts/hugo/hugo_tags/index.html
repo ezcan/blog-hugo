@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh_TW" lang="zh_TW">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.58.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hello Hugo （四） 新增標籤 &middot; ezcan&#39;s note</title>
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/monokai.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-149142019-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/hyde.css">
+  <link type="text/css" rel="stylesheet" href="https://ezcan.github.io/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class="theme-base-0c ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://ezcan.github.io/"><h1>ezcan&#39;s note</h1></a>
+      <p class="lead">
+       個人學習筆記 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://ezcan.github.io/">Home</a> </li>
+        <li><a href="https://ezcan.github.io/about/"> About </a></li><li><a href="https://codepen.io/ezcan/pens/public"> Codepen </a></li><li><a href="https://github.com/ezcan/"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2019. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1 class="title">Hello Hugo （四） 新增標籤</h1>
+  <time datetime=2019-10-02T15:34:25&#43;0800 class="post-date">Wed, Oct 2, 2019</time>
+  
+    <ul id="tags">
+      
+      <li> <a class="page-tag" href="https://ezcan.github.io/tags/hugo">hugo</a> </li>
+      
+    </ul>
+  
+  <p>建立一篇新的 .md 檔案時，會自動帶入一些內容如下，其中 title 與 date 應該不難理解； draft 為註記是否為草稿，如為 true 則不會發佈。可能是我選擇的主題（hyde）不支援 tags 這種文章分類，因此在原本的樣板中沒有看到，所以就自己動手新增囉！</p>
+
+<pre><code class="language-md">title: &quot;Hello Hugo （四） 環境建置&quot;
+date: 2019-10-01T00:01:29+08:00
+draft: false
+tags: [&quot;hugo&quot;]
+</code></pre>
+
+<p>我預計在兩個地方新增標籤，一是文章的目錄頁，二是文章的內容頁（現在這頁），因此我們找到 layout 下尋找兩個檔案。</p>
+
+<ol>
+<li>layout/index.html</li>
+<li>layout/_default/single.html</li>
+</ol>
+
+<p>分別在想要出現 tags 的地方插入下面這段程式碼，以我自己為例，就是文章標題與時間的下方。</p>
+
+<pre><code class="language-html">{{ with .Params.tags }}
+  &lt;ul class=&quot;tags&quot;&gt;
+    {{ range . }}
+    &lt;li&gt; &lt;a class=&quot;page-tag&quot; href=&quot;{{ &quot;tags&quot; | absURL }}/{{ . | urlize }}&quot;&gt;{{ . }}&lt;/a&gt; &lt;/li&gt;
+    {{ end }}
+  &lt;/ul&gt;
+{{ end }}
+</code></pre>
+
+<p>沒意外的話，應該會出現原始 html 中醜醜的清單，所以再來就是前端工程師的事情惹！為了方便以後修改，我在 static/css 下建立了我自己的 style.css ，比方說這樣。</p>
+
+<pre><code class="language-css">.tags {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  display: flex;
+}
+
+.tags .page-tag {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: -0.005rem;
+  font-weight: 400;
+  background-color:#9a9a9a;
+  color: #fff;
+  font-style: normal;
+  margin-right: 4px;
+  margin-left: 0px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  will-change: background-color;
+  transition: background-color .3s
+}
+
+.tags .page-tag:hover {
+  background-color: #ccc;
+}
+</code></pre>
+
+</div>
+
+
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-149142019-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  </body>
+</html>
