@@ -20,7 +20,9 @@
   <script>hljs.initHighlightingOnLoad();</script>
 
   <!-- Google Analytics -->
+  {{ if not .Site.IsServer }}
   {{ template "_internal/google_analytics_async.html" . }}
+  {{ end }}
 
   <!-- CSS -->
   <link type="text/css" rel="stylesheet" href="{{ .Site.BaseURL }}css/print.css" media="print">

@@ -3,7 +3,7 @@ languageCode = "zh_TW"
 title = "ezcan's note"
 theme = "Hyde"
 googleAnalytics = "UA-149142019-1"
-
+DisqusShortname = "ezcan"
 [params]
   description = "個人學習筆記"
   author = "ezcan Lien"
